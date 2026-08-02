@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Eclipes Esports · Neon</title>
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        /* ---------- RESET & BASE ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a12;
+            font-family: 'Segoe UI', 'Poppins', system-ui, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+            overflow-x: hidden;
+        }
+
+        /* ---------- ANIMATED BACKGROUND (particles) ---------- */
+        .bg-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(160, 120, 255, 0.3);
+            border-radius: 50%;
+            animation: floatParticle linear infinite;
+            box-shadow: 0 0 20px rgba(120, 80, 255, 0.2);
+        }
+
+        .particle:nth-child(1) { width: 4px; height: 4px; left: 10%; animation-duration: 18s; animation-delay: 0s; }
+        .particle:nth-child(2) { width: 6px; height: 6px; left: 20%; animation-duration: 22s; animation-delay: 2s; }
+        .particle:nth-child(3) { width: 3px; height: 3px; left: 35%; animation-duration: 16s; animation-delay: 4s; }
+        .particle:nth-child(4) { width: 8px; height: 8px; left: 50%; animation-duration: 25s; animation-delay: 1s; }
+        .particle:nth-child(5) { width: 5px; height: 5px; left: 65%; animation-duration: 20s; animation-delay: 3s; }
+        .particle:nth-child(6) { width: 4px; height: 4px; left: 78%; animation-duration: 19s; animation-delay: 5s; }
+        .particle:nth-child(7) { width: 7px; height: 7px; left: 88%; animation-duration: 23s; animation-delay: 2s; }
+        .particle:nth-child(8) { width: 5px; height: 5px; left: 15%; animation-duration: 21s; animation-delay: 6s; }
+        .particle:nth-child(9) { width: 3px; height: 3px; left: 45%; animation-duration: 17s; animation-delay: 0s; }
+        .particle:nth-child(10) { width: 6px; height: 6px; left: 72%; animation-duration: 24s; animation-delay: 4s; }
+        .particle:nth-child(11) { width: 4px; height: 4px; left: 92%; animation-duration: 20s; animation-delay: 7s; }
+        .particle:nth-child(12) { width: 5px; height: 5px; left: 5%; animation-duration: 26s; animation-delay: 3s; }
+
+        @keyframes floatParticle {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
+
+        /* ---------- MAIN CARD (glassmorphism) ---------- */
+        .main-card {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            width: 100%;
+            background: rgba(10, 10, 20, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 3.5rem;
+            padding: 3rem 2.5rem 4rem;
+            border: 1px solid rgba(160, 120, 255, 0.15);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), 0 0 80px rgba(100, 60, 255, 0.08);
+            text-align: center;
+            transition: box-shadow 0.3s;
+        }
+
+        .main-card:hover {
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.95), 0 0 120px rgba(130, 80, 255, 0.12);
+        }
+
+        /* ---------- LOGO (enhanced with neon ring) ---------- */
+        .logo-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.8rem;
+            position: relative;
+        }
+
+        .logo-ring {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: pulseRing 3s ease-in-out infinite;
+        }
+
+        /* outer glow ring */
+        .logo-ring::before {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, #a07aff, #6a3de8, #00d4ff, #a07aff);
+            padding: 3px;
+            -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 4px), #fff calc(100% - 3px));
+            mask: radial-gradient(farthest-side, transparent calc(100% - 4px), #fff calc(100% - 3px));
+            animation: spinRing 6s linear infinite;
+            box-shadow: 0 0 40px rgba(130, 80, 255, 0.3), 0 0 80px rgba(0, 200, 255, 0.1);
+        }
+
+        /* inner glow */
+        .logo-ring::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(160, 120, 255, 0.15), transparent 70%);
+            filter: blur(8px);
+            z-index: 0;
+        }
+
+        @keyframes spinRing {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulseRing {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+
+        .logo-img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: inset 0 0 30px rgba(100, 60, 255, 0.2);
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s;
+            background: #0a0a12;
+        }
+
+        .logo-img:hover {
+            transform: scale(1.05) rotate(-3deg);
+        }
+
+        /* ---------- NEON TEXT ---------- */
+        .neon-title {
+            font-size: 4.5rem;
+            font-weight: 800;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #fff;
+            text-shadow:
+                0 0 10px rgba(160, 120, 255, 0.5),
+                0 0 20px rgba(160, 120, 255, 0.3),
+                0 0 40px rgba(100, 60, 255, 0.2),
+                0 0 80px rgba(0, 200, 255, 0.1);
+            animation: flicker 3s infinite alternate;
+            margin-bottom: 0.3rem;
+        }
+
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                text-shadow:
+                    0 0 10px rgba(160, 120, 255, 0.6),
+                    0 0 20px rgba(160, 120, 255, 0.4),
+                    0 0 40px rgba(100, 60, 255, 0.3),
+                    0 0 80px rgba(0, 200, 255, 0.15);
+            }
+            20%, 24%, 55% {
+                text-shadow:
+                    0 0 5px rgba(160, 120, 255, 0.3),
+                    0 0 15px rgba(160, 120, 255, 0.2),
+                    0 0 30px rgba(100, 60, 255, 0.1);
+            }
+        }
+
+        .neon-sub {
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 8px;
+            color: rgba(180, 160, 255, 0.7);
+            text-shadow: 0 0 20px rgba(100, 60, 255, 0.2);
+            margin-top: -0.2rem;
+            margin-bottom: 2.2rem;
+            text-transform: uppercase;
+        }
+
+        /* ---------- DIVIDER ---------- */
+        .divider {
+            width: 80px;
+            height: 3px;
+            margin: 0 auto 2.2rem;
+            background: linear-gradient(90deg, transparent, #a07aff, #00d4ff, transparent);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(130, 80, 255, 0.3);
+        }
+
+        /* ---------- TAGLINE ---------- */
+        .tagline {
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: rgba(220, 210, 255, 0.85);
+            max-width: 600px;
+            margin: 0 auto 2.8rem;
+            line-height: 1.6;
+            letter-spacing: 0.5px;
+        }
+
+        .tagline i {
+            color: #a07aff;
+            margin: 0 6px;
+        }
+
+        /* ---------- SOCIAL LINKS (neon style) ---------- */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.8rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.8rem;
+            min-height: 60px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(160, 120, 255, 0.15);
+            color: rgba(200, 190, 255, 0.8);
+            font-size: 1.6rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 0 15px rgba(100, 60, 255, 0.05);
+        }
+
+        .social-link:hover {
+            transform: translateY(-6px) scale(1.08);
+            border-color: #a07aff;
+            color: #fff;
+            box-shadow: 0 0 30px rgba(130, 80, 255, 0.25), 0 0 60px rgba(0, 200, 255, 0.1);
+            background: rgba(160, 120, 255, 0.08);
+        }
+
+        .social-link i {
+            transition: transform 0.2s;
+        }
+
+        .social-link:hover i {
+            transform: scale(1.1);
+        }
+
+        /* ---------- CTA BUTTON (neon) ---------- */
+        .btn-neon {
+            display: inline-block;
+            padding: 0.9rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #fff;
+            background: transparent;
+            border: 2px solid rgba(160, 120, 255, 0.5);
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 0 30px rgba(100, 60, 255, 0.05);
+            backdrop-filter: blur(4px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-neon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(160, 120, 255, 0.15), transparent);
+            transition: left 0.6s;
+        }
+
+        .btn-neon:hover::before {
+            left: 100%;
+        }
+
+        .btn-neon:hover {
+            border-color: #a07aff;
+            box-shadow: 0 0 40px rgba(130, 80, 255, 0.2), 0 0 80px rgba(0, 200, 255, 0.08);
+            transform: scale(1.03);
+            background: rgba(160, 120, 255, 0.05);
+        }
+
+        /* ---------- FOOTER ---------- */
+        .footer-note {
+            margin-top: 3rem;
+            font-size: 0.8rem;
+            color: rgba(160, 150, 200, 0.3);
+            letter-spacing: 2px;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            padding-top: 2rem;
+        }
+
+        .footer-note i {
+            color: rgba(160, 120, 255, 0.2);
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 700px) {
+            .main-card {
+                padding: 2rem 1.5rem 3rem;
+                border-radius: 2.5rem;
+            }
+
+            .neon-title {
+                font-size: 2.6rem;
+                letter-spacing: 2px;
+            }
+
+            .neon-sub {
+                font-size: 0.9rem;
+                letter-spacing: 5px;
+            }
+
+            .logo-ring {
+                width: 110px;
+                height: 110px;
+            }
+
+            .logo-img {
+                width: 100px;
+                height: 100px;
+            }
+
+            .tagline {
+                font-size: 1.1rem;
+                padding: 0 0.5rem;
+            }
+
+            .social-links {
+                gap: 1.2rem;
+            }
+
+            .social-link {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+
+            .btn-neon {
+                padding: 0.7rem 2rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .neon-title {
+                font-size: 2rem;
+            }
+
+            .logo-ring {
+                width: 90px;
+                height: 90px;
+            }
+
+            .logo-img {
+                width: 80px;
+                height: 80px;
+            }
+
+            .tagline {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BACKGROUND PARTICLES -->
+    <div class="bg-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-card">
+
+        <!-- LOGO with neon ring -->
+        <div class="logo-wrapper">
+            <div class="logo-ring">
+                <img
+                    class="logo-img"
+                    src="https://cdn.discordapp.com/icons/1524467483862503465/8148c108a820b64612468f6fe3b9fd95.webp?size=1280"
+                    alt="Eclipes Esports logo"
+                    loading="lazy"
+                />
+            </div>
+        </div>
+
+        <!-- NEON TITLE -->
+        <h1 class="neon-title">Eclipes Esports</h1>
+        <p class="neon-sub"><i class="fas fa-bolt" style="margin-right: 10px; opacity: 0.5;"></i> custom fn matches cool people and active community <i class="fas fa-bolt" style="margin-left: 10px; opacity: 0.5;"></i></p>
+
+        <div class="divider"></div>
+
+        <!-- TAGLINE -->
+        <p class="tagline">
+            <i class="fas fa-gamepad"></i> 
+            a growing esports clan with a great community! 
+            <i class="fas fa-fire"></i>
+            <br />
+            <span style="font-size: 0.9rem; opacity: 0.6; letter-spacing: 2px;">
+                made by @the.gamerz_ on discord
+            </span>
+        </p>
+
+        <!-- SOCIAL LINKS (DYNAMIC - generated by JavaScript) -->
+        <div class="social-links" id="socialLinks"></div>
+
+        <!-- CTA BUTTON - Now links to Discord! -->
+        <a href="https://discord.gg/JBZ3rHnHW" target="_blank" rel="noopener noreferrer" class="btn-neon">
+            <i class="fas fa-star" style="margin-right: 10px;"></i> Join the clan <i class="fas fa-star" style="margin-left: 10px;"></i>
+        </a>
+
+        <!-- FOOTER -->
+        <div class="footer-note">
+            <i class="fas fa-circle" style="font-size: 0.4rem; vertical-align: middle; margin-right: 8px;"></i>
+            eclipes · 2026
+            <i class="fas fa-circle" style="font-size: 0.4rem; vertical-align: middle; margin-left: 8px;"></i>
+        </div>
+
+    </div>
+
+    <script>
+        // ============================================================
+        //  SOCIAL LINKS CONFIGURATION
+        //  Add or remove platforms here — they'll auto-generate!
+        //  Format: { icon: 'fa-brands fa-xxx', label: 'Name', url: 'https://...' }
+        // ============================================================
+        const socialLinks = [
+            {
+                icon: 'fab fa-discord',
+                label: 'Discord',
+                url: 'https://discord.gg/JBZ3rHnHW'
+            },
+            {
+                icon: 'fab fa-twitch',
+                label: 'Twitch',
+                url: 'https://twitch.tv/eclipseesportsyt'
+            },
+            {
+                icon: 'fab fa-youtube',
+                label: 'YouTube',
+                url: 'https://youtube.com/@Teamesports-d3c'
+            },
+            {
+                icon: 'fab fa-tiktok',
+                label: 'TikTok',
+                url: 'https://tiktok.com/@teameclipsesports1'
+            }
+            // ─── Add more here! ─────────────────────────────
+            // {
+            //   icon: 'fab fa-github',
+            //   label: 'GitHub',
+            //   url: 'https://github.com/yourorg'
+            // },
+            // {
+            //   icon: 'fab fa-reddit',
+            //   label: 'Reddit',
+            //   url: 'https://reddit.com/r/yourclan'
+            // }
+        ];
+
+        // ─── Render social links ──────────────────────────────
+        const container = document.getElementById('socialLinks');
+
+        socialLinks.forEach(link => {
+            const anchor = document.createElement('a');
+            anchor.href = link.url;
+            anchor.className = 'social-link';
+            anchor.setAttribute('aria-label', link.label);
+            anchor.target = '_blank';
+            anchor.rel = 'noopener noreferrer';
+
+            const icon = document.createElement('i');
+            icon.className = link.icon;
+
+            anchor.appendChild(icon);
+            container.appendChild(anchor);
+        });
+    </script>
+
+</body>
+</html>
