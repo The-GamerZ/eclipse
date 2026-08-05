@@ -84,7 +84,6 @@
             opacity: 1;
         }
 
-        /* Glitch scanlines (horizontal) */
         .glitch-lines {
             position: absolute;
             top: 0;
@@ -106,7 +105,6 @@
             100% { transform: translateY(4px); }
         }
 
-        /* Vertical glitch lines that go down the screen */
         .glitch-vertical-line {
             position: absolute;
             top: -10%;
@@ -118,7 +116,6 @@
             animation: verticalGlitchDown 0.8s ease-in-out forwards;
         }
 
-        /* Blur behind vertical lines */
         .glitch-vertical-line::before {
             content: '';
             position: absolute;
@@ -149,7 +146,6 @@
             }
         }
 
-        /* Random horizontal glitch bars */
         .glitch-bar {
             position: absolute;
             left: 0;
@@ -167,7 +163,6 @@
             100% { opacity: 0; transform: translateX(10%); }
         }
 
-        /* Random color shift glitch */
         .glitch-color {
             position: absolute;
             top: 0;
@@ -186,7 +181,6 @@
             100% { opacity: 0; }
         }
 
-        /* Screen shake effect */
         .glitch-shake {
             animation: shake 0.15s ease-in-out;
         }
@@ -239,7 +233,6 @@
             }
         }
 
-        /* Controller trail effect */
         .controller-trail {
             position: fixed;
             pointer-events: none;
@@ -248,7 +241,7 @@
             filter: blur(4px);
         }
 
-        /* ---------- MAIN CARD (glassmorphism) ---------- */
+        /* ---------- MAIN CARD ---------- */
         .main-card {
             position: relative;
             z-index: 1;
@@ -267,6 +260,21 @@
 
         .main-card:hover {
             box-shadow: 0 30px 70px rgba(0, 0, 0, 0.95), 0 0 120px rgba(130, 80, 255, 0.12);
+        }
+
+        /* ---------- PAGE CONTAINER ---------- */
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
         /* ---------- LOGO (enhanced with neon ring) ---------- */
@@ -288,7 +296,6 @@
             animation: pulseRing 3s ease-in-out infinite;
         }
 
-        /* outer glow ring */
         .logo-ring::before {
             content: '';
             position: absolute;
@@ -302,7 +309,6 @@
             box-shadow: 0 0 40px rgba(255, 0, 255, 0.3), 0 0 80px rgba(0, 200, 255, 0.1);
         }
 
-        /* inner glow */
         .logo-ring::after {
             content: '';
             position: absolute;
@@ -340,7 +346,7 @@
             transform: scale(1.05) rotate(-3deg);
         }
 
-        /* ---------- NEON TEXT (COLORFUL) ---------- */
+        /* ---------- NEON TEXT ---------- */
         .neon-title {
             font-size: 4.5rem;
             font-weight: 900;
@@ -387,6 +393,17 @@
             font-family: 'Orbitron', sans-serif;
         }
 
+        .page-sub {
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 8px;
+            color: rgba(180, 160, 255, 0.6);
+            text-shadow: 0 0 20px rgba(100, 60, 255, 0.2);
+            margin-bottom: 2.2rem;
+            text-transform: uppercase;
+            font-family: 'Orbitron', sans-serif;
+        }
+
         /* ---------- DIVIDER ---------- */
         .divider {
             width: 80px;
@@ -397,7 +414,7 @@
             box-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
         }
 
-        /* ---------- TAGLINE (PINK NEON) ---------- */
+        /* ---------- TAGLINE ---------- */
         .tagline {
             font-size: 1.4rem;
             font-weight: 400;
@@ -423,7 +440,37 @@
             text-shadow: 0 0 15px rgba(160, 120, 255, 0.3);
         }
 
-        /* ---------- SOCIAL LINKS (neon style) ---------- */
+        /* ---------- CONTENT AREA (for About & Not Ready pages) ---------- */
+        .content-area {
+            color: #ff6bff;
+            text-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
+            font-size: 1.2rem;
+            line-height: 2;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            font-family: 'Orbitron', sans-serif;
+            min-height: 120px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 0, 255, 0.05);
+            border-radius: 20px;
+            background: rgba(255, 0, 255, 0.02);
+        }
+
+        .content-area i {
+            color: #00d4ff;
+            margin: 0 8px;
+            text-shadow: 0 0 20px rgba(0, 200, 255, 0.3);
+        }
+
+        .content-area p {
+            margin-bottom: 10px;
+        }
+
+        .content-area p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ---------- SOCIAL LINKS (Home page) ---------- */
         .social-links {
             display: flex;
             justify-content: center;
@@ -469,7 +516,77 @@
             transform: scale(1.1);
         }
 
-        /* ---------- CTA BUTTON (neon) ---------- */
+        /* ---------- SOCIAL PAGES (Discord, Twitch, YouTube, TikTok) ---------- */
+        .social-page-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            max-width: 500px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .social-page-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 60px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 0, 255, 0.15);
+            color: #00d4ff;
+            font-size: 0.9rem;
+            font-weight: 400;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: 0 0 15px rgba(0, 200, 255, 0.2);
+            letter-spacing: 1px;
+        }
+
+        .social-page-link:hover {
+            transform: translateY(-3px) scale(1.02);
+            border-color: #ff00ff;
+            color: #ff6bff;
+            box-shadow: 0 0 30px rgba(255, 0, 255, 0.2), 0 0 60px rgba(0, 200, 255, 0.1);
+            background: rgba(255, 0, 255, 0.05);
+            text-shadow: 0 0 25px rgba(255, 0, 255, 0.4);
+        }
+
+        .social-page-link i {
+            font-size: 1.4rem;
+            color: #ff00ff;
+            text-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
+            min-width: 30px;
+        }
+
+        .social-page-link:hover i {
+            color: #00d4ff;
+            text-shadow: 0 0 20px rgba(0, 200, 255, 0.3);
+        }
+
+        .social-page-link .link-label {
+            font-size: 0.7rem;
+            opacity: 0.5;
+            margin-left: auto;
+            letter-spacing: 2px;
+        }
+
+        .social-page-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ff6bff;
+            text-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
+            margin-bottom: 1.5rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .social-page-title i {
+            margin-right: 12px;
+            color: #00d4ff;
+        }
+
+        /* ---------- BUTTONS ---------- */
         .btn-neon {
             display: inline-block;
             padding: 0.9rem 3rem;
@@ -490,6 +607,7 @@
             overflow: hidden;
             font-family: 'Orbitron', sans-serif;
             text-shadow: 0 0 20px rgba(0, 200, 255, 0.3);
+            margin: 0.5rem;
         }
 
         .btn-neon::before {
@@ -526,7 +644,15 @@
             text-shadow: 0 0 20px rgba(0, 200, 255, 0.3);
         }
 
-        /* ---------- CONTRIBUTORS SECTION (NEON) ---------- */
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* ---------- CONTRIBUTORS SECTION ---------- */
         .contributors-section {
             margin-top: 3rem;
             padding-top: 2rem;
@@ -585,7 +711,7 @@
             text-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
         }
 
-        /* ---------- FOOTER (NEON) ---------- */
+        /* ---------- FOOTER ---------- */
         .footer-note {
             margin-top: 2.5rem;
             font-size: 0.8rem;
@@ -644,9 +770,9 @@
             }
 
             .btn-neon {
-                padding: 0.7rem 2rem;
-                font-size: 0.9rem;
-                letter-spacing: 3px;
+                padding: 0.7rem 1.5rem;
+                font-size: 0.8rem;
+                letter-spacing: 2px;
             }
 
             .contributors-list {
@@ -659,6 +785,20 @@
 
             .flying-controller {
                 font-size: 2.5rem !important;
+            }
+
+            .content-area {
+                font-size: 1rem;
+                padding: 1rem;
+            }
+
+            .social-page-link {
+                font-size: 0.8rem;
+                padding: 0.7rem 1.2rem;
+            }
+
+            .social-page-title {
+                font-size: 1.2rem;
             }
         }
 
@@ -684,6 +824,16 @@
 
             .flying-controller {
                 font-size: 2rem !important;
+            }
+
+            .content-area {
+                font-size: 0.85rem;
+                padding: 0.8rem;
+            }
+
+            .social-page-link {
+                font-size: 0.7rem;
+                padding: 0.6rem 1rem;
             }
         }
     </style>
@@ -714,7 +864,7 @@
     <!-- MAIN CONTENT -->
     <div class="main-card" id="mainCard">
 
-        <!-- LOGO with neon ring -->
+        <!-- LOGO with neon ring (visible on all pages) -->
         <div class="logo-wrapper">
             <div class="logo-ring">
                 <img
@@ -726,60 +876,318 @@
             </div>
         </div>
 
-        <!-- NEON TITLE - Rainbow gradient -->
-        <h1 class="neon-title">Eclipse Esports</h1>
-        <p class="neon-sub"><i class="fas fa-bolt" style="margin-right: 10px;"></i> custom fn matches cool people and active community <i class="fas fa-bolt" style="margin-left: 10px;"></i></p>
+        <!-- ==================== PAGE: HOME ==================== -->
+        <div class="page active" id="pageHome">
+            <h1 class="neon-title">Eclipse Esports</h1>
+            <p class="neon-sub"><i class="fas fa-bolt" style="margin-right: 10px;"></i> custom fn matches cool people and active community <i class="fas fa-bolt" style="margin-left: 10px;"></i></p>
 
-        <div class="divider"></div>
+            <div class="divider"></div>
 
-        <!-- TAGLINE - Pink neon -->
-        <p class="tagline">
-            <i class="fas fa-gamepad"></i> 
-            a growing esports clan with a great community! 
-            <i class="fas fa-fire"></i>
-            <br />
-            <span style="font-size: 0.9rem; letter-spacing: 2px; color: #a07aff; text-shadow: 0 0 15px rgba(160, 120, 255, 0.3);">
-                made by @the.gamerz_ on discord
-            </span>
-        </p>
+            <p class="tagline">
+                <i class="fas fa-gamepad"></i> 
+                a growing esports clan with a great community! 
+                <i class="fas fa-fire"></i>
+                <br />
+                <span style="font-size: 0.9rem; letter-spacing: 2px; color: #a07aff; text-shadow: 0 0 15px rgba(160, 120, 255, 0.3);">
+                    made by @the.gamerz_ on discord
+                </span>
+            </p>
 
-        <!-- SOCIAL LINKS (DYNAMIC - generated by JavaScript) -->
-        <div class="social-links" id="socialLinks"></div>
+            <!-- SOCIAL LINKS (Home page buttons) -->
+            <div class="social-links" id="socialLinks"></div>
 
-        <!-- CTA BUTTON -->
-        <a href="https://discord.gg/JBZ3rHnHW" target="_blank" rel="noopener noreferrer" class="btn-neon" id="joinButton">
-            <i class="fas fa-star" style="margin-right: 10px;"></i> Join the clan <i class="fas fa-star" style="margin-left: 10px;"></i>
-        </a>
-
-        <!-- CONTRIBUTORS SECTION -->
-        <div class="contributors-section">
-            <div class="contributors-title">
-                <i class="fas fa-heart"></i>
-                people who helped us
-                <i class="fas fa-heart"></i>
+            <!-- NAVIGATION BUTTONS -->
+            <div class="btn-group">
+                <button class="btn-neon" onclick="switchPage('about')">
+                    <i class="fas fa-info-circle" style="margin-right: 10px;"></i> About
+                </button>
+                <button class="btn-neon" onclick="switchPage('notready')">
+                    <i class="fas fa-hourglass-half" style="margin-right: 10px;"></i> Not Ready to Join
+                </button>
             </div>
-            <div class="contributors-list">
-                <span class="contributor"><i class="fas fa-user"></i> @the.gamerz_</span>
-                <span class="contributor"><i class="fas fa-user"></i> @paradontweaksyk</span>
-                <span class="contributor"><i class="fas fa-user"></i> @zylan55</span>
-                <span class="contributor"><i class="fas fa-user"></i> @storm050883</span>
-                <span class="contributor"><i class="fas fa-user"></i> @nick09955</span>
-                <span class="contributor"><i class="fas fa-user"></i> @agent_louay58</span>
+
+            <!-- CTA BUTTON -->
+            <a href="https://discord.gg/JBZ3rHnHW" target="_blank" rel="noopener noreferrer" class="btn-neon" id="joinButton">
+                <i class="fas fa-star" style="margin-right: 10px;"></i> Join the clan <i class="fas fa-star" style="margin-left: 10px;"></i>
+            </a>
+
+            <!-- CONTRIBUTORS -->
+            <div class="contributors-section">
+                <div class="contributors-title">
+                    <i class="fas fa-heart"></i>
+                    people who helped us
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="contributors-list">
+                    <span class="contributor"><i class="fas fa-user"></i> @the.gamerz_</span>
+                    <span class="contributor"><i class="fas fa-user"></i> @paradontweaksyk</span>
+                    <span class="contributor"><i class="fas fa-user"></i> @zylan55</span>
+                    <span class="contributor"><i class="fas fa-user"></i> @storm050883</span>
+                    <span class="contributor"><i class="fas fa-user"></i> @nick09955</span>
+                    <span class="contributor"><i class="fas fa-user"></i> @agent_louay58</span>
+                </div>
+            </div>
+
+            <div class="footer-note">
+                <i class="fas fa-circle" style="font-size: 0.4rem; vertical-align: middle; margin-right: 8px;"></i>
+                eclipse · 2026
+                <i class="fas fa-circle" style="font-size: 0.4rem; vertical-align: middle; margin-left: 8px;"></i>
             </div>
         </div>
 
-        <!-- FOOTER -->
-        <div class="footer-note">
-            <i class="fas fa-circle" style="font-size: 0.4rem; vertical-align: middle; margin-right: 8px;"></i>
-            eclipse · 2026
-            <i class="fas fa-circle" style="font-size: 0.4rem; vertical-align: middle; margin-left: 8px;"></i>
+        <!-- ==================== PAGE: ABOUT ==================== -->
+        <div class="page" id="pageAbout">
+            <h1 class="neon-title">About Us</h1>
+            <p class="page-sub"><i class="fas fa-bolt" style="margin-right: 10px;"></i> who we are <i class="fas fa-bolt" style="margin-left: 10px;"></i></p>
+
+            <div class="divider"></div>
+
+            <div class="content-area">
+                <i class="fas fa-gamepad"></i>
+                <p>
+                    <i class="fas fa-star" style="color: #ff00ff;"></i>
+                    Welcome to Eclipse Esports!
+                    <i class="fas fa-star" style="color: #ff00ff;"></i>
+                </p>
+                <p>
+                    We are an esports clan who has a great community, is really fun, and is really active. We would love if you could come and join us on this adventure!
+                </p>
+                <p>
+                    <i class="fas fa-fire" style="color: #ff6bff;"></i>
+                    We play custom Fortnite matches, host events, and build lasting friendships. Whether you're a competitive player or just looking for a fun group to game with, Eclipse Esports is the place for you!
+                    <i class="fas fa-fire" style="color: #ff6bff;"></i>
+                </p>
+            </div>
+
+            <!-- Discord Links -->
+            <div style="margin: 0 auto 2rem; max-width: 500px;">
+                <p style="color: #a07aff; font-size: 0.9rem; letter-spacing: 3px; margin-bottom: 1rem; text-shadow: 0 0 15px rgba(160, 120, 255, 0.3);">
+                    <i class="fas fa-discord" style="color: #ff00ff; margin-right: 8px;"></i>
+                    Join Our Discord Servers
+                </p>
+                <div class="social-page-links">
+                    <a href="https://discord.gg/jDte5qVC4" target="_blank" rel="noopener noreferrer" class="social-page-link">
+                        <i class="fab fa-discord"></i>
+                        Main Server
+                        <span class="link-label">main</span>
+                    </a>
+                    <a href="https://discord.gg/jenammb8Y" target="_blank" rel="noopener noreferrer" class="social-page-link">
+                        <i class="fab fa-discord"></i>
+                        Eclipse Devs
+                        <span class="link-label">dev</span>
+                    </a>
+                    <a href="https://discord.gg/SPSmvngsB" target="_blank" rel="noopener noreferrer" class="social-page-link">
+                        <i class="fab fa-discord"></i>
+                        Eclipse Testing
+                        <span class="link-label">test</span>
+                    </a>
+                    <a href="https://discord.gg/nz2dETJDP" target="_blank" rel="noopener noreferrer" class="social-page-link">
+                        <i class="fab fa-discord"></i>
+                        Eclipse Media
+                        <span class="link-label">media</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- BACK BUTTON -->
+            <button class="btn-neon" onclick="switchPage('home')">
+                <i class="fas fa-arrow-left" style="margin-right: 10px;"></i> Back to Home
+            </button>
+
+            <div class="footer-note" style="margin-top: 2.5rem;">
+                <i class="fas fa-circle" style="font-size: 0.4rem; vertical-align: middle; margin-right: 8px;"></i>
+                eclipse · 2026
+                <i class="fas fa-circle" style="font-size: 0.4rem; vertical-align: middle; margin-left: 8px;"></i>
+            </div>
+        </div>
+
+        <!-- ==================== PAGE: NOT READY ==================== -->
+        <div class="page" id="pageNotReady">
+            <h1 class="neon-title">Not Ready to Join</h1>
+            <p class="page-sub"><i class="fas fa-bolt" style="margin-right: 10px;"></i> coming soon <i class="fas fa-bolt" style="margin-left: 10px;"></i></p>
+
+            <div class="divider"></div>
+
+            <div class="content-area">
+                <i class="fas fa-hourglass-half"></i>
+                <p>
+                    <i class="fas fa-clock" style="color: #ff00ff;"></i>
+                    Not ready to join yet? That's fine! We love having new people but value you over having new members and expanding.
+                    <i class="fas fa-clock" style="color: #ff00ff;"></i>
+                </p>
+                <p>
+                    Take your time and when you're ready to join, 
+                    <span style="color: #00d4ff;">click the join button!</span>
+                </p>
+                <p>
+                    <i class="fas fa-rocket" style="color: #ff6bff;"></i>
+                    We'll be here waiting for you!
+                    <i class="fas fa-rocket" style="color: #ff6bff;"></i>
+                </p>
+            </div>
+
+            <!-- BACK BUTTON -->
+            <button class="btn-neon" onclick="switchPage('home')">
+                <i class="fas fa-arrow-left" style="margin-right: 10px;"></i> Back to Home
+            </button>
+
+            <div class="footer-note" style="margin-top: 2.5rem;">
+                <i class="fas fa-circle" style="font-size: 0.4rem; vertical-align: middle; margin-right: 8px;"></i>
+                eclipse · 2026
+                <i class="fas fa-circle" style="font-size: 0.4rem; vertical-align: middle; margin-left: 8px;"></i>
+            </div>
+        </div>
+
+        <!-- ==================== PAGE: DISCORD ==================== -->
+        <div class="page" id="pageDiscord">
+            <h1 class="neon-title">Discord</h1>
+            <p class="page-sub"><i class="fas fa-bolt" style="margin-right: 10px;"></i> join our community <i class="fas fa-bolt" style="margin-left: 10px;"></i></p>
+
+            <div class="divider"></div>
+
+            <div class="social-page-title">
+                <i class="fab fa-discord"></i> Our Discord Servers
+            </div>
+
+            <div class="social-page-links">
+                <a href="https://discord.gg/jDte5qVC4" target="_blank" rel="noopener noreferrer" class="social-page-link">
+                    <i class="fab fa-discord"></i>
+                    Main Server
+                    <span class="link-label">main</span>
+                </a>
+                <a href="https://discord.gg/jenammb8Y" target="_blank" rel="noopener noreferrer" class="social-page-link">
+                    <i class="fab fa-discord"></i>
+                    Eclipse Devs
+                    <span class="link-label">dev</span>
+                </a>
+                <a href="https://discord.gg/SPSmvngsB" target="_blank" rel="noopener noreferrer" class="social-page-link">
+                    <i class="fab fa-discord"></i>
+                    Eclipse Testing
+                    <span class="link-label">test</span>
+                </a>
+                <a href="https://discord.gg/nz2dETJDP" target="_blank" rel="noopener noreferrer" class="social-page-link">
+                    <i class="fab fa-discord"></i>
+                    Eclipse Media
+                    <span class="link-label">media</span>
+                </a>
+            </div>
+
+            <button class="btn-neon" onclick="switchPage('home')">
+                <i class="fas fa-arrow-left" style="margin-right: 10px;"></i> Back to Home
+            </button>
+
+            <div class="footer-note" style="margin-top: 2.5rem;">
+                <i class="fas fa-circle" style="font-size: 0.4rem; vertical-align: middle; margin-right: 8px;"></i>
+                eclipse · 2026
+                <i class="fas fa-circle" style="font-size: 0.4rem; vertical-align: middle; margin-left: 8px;"></i>
+            </div>
+        </div>
+
+        <!-- ==================== PAGE: TWITCH ==================== -->
+        <div class="page" id="pageTwitch">
+            <h1 class="neon-title">Twitch</h1>
+            <p class="page-sub"><i class="fas fa-bolt" style="margin-right: 10px;"></i> watch us live <i class="fas fa-bolt" style="margin-left: 10px;"></i></p>
+
+            <div class="divider"></div>
+
+            <div class="social-page-title">
+                <i class="fab fa-twitch"></i> Our Twitch Channels
+            </div>
+
+            <div class="social-page-links">
+                <a href="https://www.twitch.tv/eclipseesports01" target="_blank" rel="noopener noreferrer" class="social-page-link">
+                    <i class="fab fa-twitch"></i>
+                    Eclipse Esports
+                    <span class="link-label">main</span>
+                </a>
+                <a href="https://www.twitch.tv/eclipseesportsyt" target="_blank" rel="noopener noreferrer" class="social-page-link">
+                    <i class="fab fa-twitch"></i>
+                    Eclipse Esports YT
+                    <span class="link-label">alt</span>
+                </a>
+            </div>
+
+            <button class="btn-neon" onclick="switchPage('home')">
+                <i class="fas fa-arrow-left" style="margin-right: 10px;"></i> Back to Home
+            </button>
+
+            <div class="footer-note" style="margin-top: 2.5rem;">
+                <i class="fas fa-circle" style="font-size: 0.4rem; vertical-align: middle; margin-right: 8px;"></i>
+                eclipse · 2026
+                <i class="fas fa-circle" style="font-size: 0.4rem; vertical-align: middle; margin-left: 8px;"></i>
+            </div>
+        </div>
+
+        <!-- ==================== PAGE: YOUTUBE ==================== -->
+        <div class="page" id="pageYouTube">
+            <h1 class="neon-title">YouTube</h1>
+            <p class="page-sub"><i class="fas fa-bolt" style="margin-right: 10px;"></i> check out our content <i class="fas fa-bolt" style="margin-left: 10px;"></i></p>
+
+            <div class="divider"></div>
+
+            <div class="social-page-title">
+                <i class="fab fa-youtube"></i> Our YouTube Channels
+            </div>
+
+            <div class="social-page-links">
+                <a href="https://youtube.com/@Teamesports-d3c" target="_blank" rel="noopener noreferrer" class="social-page-link">
+                    <i class="fab fa-youtube"></i>
+                    Team Esports
+                    <span class="link-label">main</span>
+                </a>
+                <a href="https://www.youtube.com/@Physchoesports" target="_blank" rel="noopener noreferrer" class="social-page-link">
+                    <i class="fab fa-youtube"></i>
+                    Physcho Esports
+                    <span class="link-label">alt</span>
+                </a>
+            </div>
+
+            <button class="btn-neon" onclick="switchPage('home')">
+                <i class="fas fa-arrow-left" style="margin-right: 10px;"></i> Back to Home
+            </button>
+
+            <div class="footer-note" style="margin-top: 2.5rem;">
+                <i class="fas fa-circle" style="font-size: 0.4rem; vertical-align: middle; margin-right: 8px;"></i>
+                eclipse · 2026
+                <i class="fas fa-circle" style="font-size: 0.4rem; vertical-align: middle; margin-left: 8px;"></i>
+            </div>
+        </div>
+
+        <!-- ==================== PAGE: TIKTOK ==================== -->
+        <div class="page" id="pageTikTok">
+            <h1 class="neon-title">TikTok</h1>
+            <p class="page-sub"><i class="fas fa-bolt" style="margin-right: 10px;"></i> follow us <i class="fas fa-bolt" style="margin-left: 10px;"></i></p>
+
+            <div class="divider"></div>
+
+            <div class="social-page-title">
+                <i class="fab fa-tiktok"></i> Our TikTok
+            </div>
+
+            <div class="social-page-links">
+                <a href="https://tiktok.com/@teameclipsesports1" target="_blank" rel="noopener noreferrer" class="social-page-link">
+                    <i class="fab fa-tiktok"></i>
+                    Team Eclipse Sports
+                    <span class="link-label">main</span>
+                </a>
+            </div>
+
+            <button class="btn-neon" onclick="switchPage('home')">
+                <i class="fas fa-arrow-left" style="margin-right: 10px;"></i> Back to Home
+            </button>
+
+            <div class="footer-note" style="margin-top: 2.5rem;">
+                <i class="fas fa-circle" style="font-size: 0.4rem; vertical-align: middle; margin-right: 8px;"></i>
+                eclipse · 2026
+                <i class="fas fa-circle" style="font-size: 0.4rem; vertical-align: middle; margin-left: 8px;"></i>
+            </div>
         </div>
 
     </div>
 
     <script>
         // ============================================================
-        //  SOUND EFFECTS (Web Audio API - no external files needed!)
+        //  SOUND EFFECTS
         // ============================================================
         class SoundEffects {
             constructor() {
@@ -795,17 +1203,13 @@
                 }
             }
 
-            // Glitch sound - static/crunchy noise
             playGlitchSound() {
                 if (!this.audioCtx) return;
-                
                 try {
                     const duration = 0.3;
                     const bufferSize = this.audioCtx.sampleRate * duration;
                     const buffer = this.audioCtx.createBuffer(1, bufferSize, this.audioCtx.sampleRate);
                     const data = buffer.getChannelData(0);
-                    
-                    // Create glitchy noise
                     for (let i = 0; i < bufferSize; i++) {
                         if (Math.random() < 0.05) {
                             data[i] = (Math.random() * 2 - 1) * 0.8;
@@ -813,32 +1217,24 @@
                             data[i] = (Math.random() * 2 - 1) * 0.2;
                         }
                     }
-                    
                     const source = this.audioCtx.createBufferSource();
                     source.buffer = buffer;
-                    
                     const gainNode = this.audioCtx.createGain();
                     gainNode.gain.setValueAtTime(0.3, this.audioCtx.currentTime);
                     gainNode.gain.exponentialRampToValueAtTime(0.01, this.audioCtx.currentTime + duration);
-                    
                     const distortion = this.audioCtx.createWaveShaper();
                     distortion.curve = this.makeDistortionCurve(100);
-                    
                     source.connect(distortion);
                     distortion.connect(gainNode);
                     gainNode.connect(this.audioCtx.destination);
-                    
                     source.start();
                     source.stop(this.audioCtx.currentTime + duration);
-                } catch (e) {
-                    // Silently fail if audio can't play
-                }
+                } catch (e) {}
             }
 
             makeDistortionCurve(amount) {
                 const samples = 44100;
                 const curve = new Float32Array(samples);
-                const deg = Math.PI / 180;
                 for (let i = 0; i < samples; ++i) {
                     const x = (i * 2) / samples - 1;
                     curve[i] = (Math.PI + amount) * x / (Math.PI + amount * Math.abs(x));
@@ -846,143 +1242,146 @@
                 return curve;
             }
 
-            // Click sound - LOUDER short blip
             playClickSound() {
                 if (!this.audioCtx) return;
-                
                 try {
                     const duration = 0.1;
                     const bufferSize = this.audioCtx.sampleRate * duration;
                     const buffer = this.audioCtx.createBuffer(1, bufferSize, this.audioCtx.sampleRate);
                     const data = buffer.getChannelData(0);
-                    
                     for (let i = 0; i < bufferSize; i++) {
                         const t = i / bufferSize;
-                        // Louder click with more impact
                         data[i] = (Math.random() * 2 - 1) * Math.exp(-t * 20) * 0.7;
-                        // Add a sharper attack
                         if (i < bufferSize * 0.05) {
                             data[i] = (Math.random() * 2 - 1) * 0.9;
                         }
                     }
-                    
                     const source = this.audioCtx.createBufferSource();
                     source.buffer = buffer;
-                    
                     const gainNode = this.audioCtx.createGain();
-                    gainNode.gain.setValueAtTime(0.6, this.audioCtx.currentTime); // Louder!
+                    gainNode.gain.setValueAtTime(0.6, this.audioCtx.currentTime);
                     gainNode.gain.exponentialRampToValueAtTime(0.001, this.audioCtx.currentTime + duration);
-                    
                     source.connect(gainNode);
                     gainNode.connect(this.audioCtx.destination);
-                    
                     source.start();
                     source.stop(this.audioCtx.currentTime + duration);
-                } catch (e) {
-                    // Silently fail
-                }
+                } catch (e) {}
             }
 
-            // Spinning sound - LOUDER whoosh/whir
             playSpinSound() {
                 if (!this.audioCtx) return;
-                
                 try {
                     const duration = 0.8;
                     const bufferSize = this.audioCtx.sampleRate * duration;
                     const buffer = this.audioCtx.createBuffer(1, bufferSize, this.audioCtx.sampleRate);
                     const data = buffer.getChannelData(0);
-                    
-                    // Create whooshing sound with more volume
                     for (let i = 0; i < bufferSize; i++) {
                         const t = i / bufferSize;
                         const frequency = 150 + t * 400;
                         const osc = Math.sin(2 * Math.PI * frequency * t * 6);
                         const noise = (Math.random() * 2 - 1) * 0.15;
-                        // Louder base sound
                         data[i] = (osc * 0.5 + noise) * Math.exp(-t * 2.5);
-                        // Add extra punch at the start
                         if (t < 0.1) {
                             data[i] += (Math.random() * 2 - 1) * 0.3 * (1 - t * 10);
                         }
                     }
-                    
                     const source = this.audioCtx.createBufferSource();
                     source.buffer = buffer;
-                    
                     const gainNode = this.audioCtx.createGain();
-                    gainNode.gain.setValueAtTime(0.5, this.audioCtx.currentTime); // Louder!
+                    gainNode.gain.setValueAtTime(0.5, this.audioCtx.currentTime);
                     gainNode.gain.exponentialRampToValueAtTime(0.001, this.audioCtx.currentTime + duration);
-                    
-                    // Add slight distortion for more presence
                     const distortion = this.audioCtx.createWaveShaper();
                     distortion.curve = this.makeDistortionCurve(20);
-                    
                     source.connect(distortion);
                     distortion.connect(gainNode);
                     gainNode.connect(this.audioCtx.destination);
-                    
                     source.start();
                     source.stop(this.audioCtx.currentTime + duration);
-                } catch (e) {
-                    // Silently fail
-                }
+                } catch (e) {}
             }
         }
 
-        // Initialize sounds
         const sounds = new SoundEffects();
 
         // ============================================================
-        //  SOCIAL LINKS CONFIGURATION
+        //  PAGE SWITCHING
+        // ============================================================
+        function switchPage(page) {
+            sounds.playClickSound();
+            
+            document.querySelectorAll('.page').forEach(p => {
+                p.classList.remove('active');
+            });
+            
+            if (page === 'home') {
+                document.getElementById('pageHome').classList.add('active');
+            } else if (page === 'about') {
+                document.getElementById('pageAbout').classList.add('active');
+            } else if (page === 'notready') {
+                document.getElementById('pageNotReady').classList.add('active');
+            } else if (page === 'discord') {
+                document.getElementById('pageDiscord').classList.add('active');
+            } else if (page === 'twitch') {
+                document.getElementById('pageTwitch').classList.add('active');
+            } else if (page === 'youtube') {
+                document.getElementById('pageYouTube').classList.add('active');
+            } else if (page === 'tiktok') {
+                document.getElementById('pageTikTok').classList.add('active');
+            }
+            
+            const mainCard = document.getElementById('mainCard');
+            mainCard.classList.add('glitch-shake');
+            setTimeout(() => {
+                mainCard.classList.remove('glitch-shake');
+            }, 200);
+        }
+
+        // ============================================================
+        //  SOCIAL LINKS (Home page buttons)
         // ============================================================
         const socialLinks = [
             {
                 icon: 'fab fa-discord',
                 label: 'Discord',
-                url: 'https://discord.gg/JBZ3rHnHW'
+                page: 'discord'
             },
             {
                 icon: 'fab fa-twitch',
                 label: 'Twitch',
-                url: 'https://twitch.tv/eclipseesportsyt'
+                page: 'twitch'
             },
             {
                 icon: 'fab fa-youtube',
                 label: 'YouTube',
-                url: 'https://youtube.com/@Teamesports-d3c'
+                page: 'youtube'
             },
             {
                 icon: 'fab fa-tiktok',
                 label: 'TikTok',
-                url: 'https://tiktok.com/@teameclipsesports1'
+                page: 'tiktok'
             }
         ];
 
-        // ─── Render social links with click sounds ──────────────
         const container = document.getElementById('socialLinks');
 
         socialLinks.forEach(link => {
-            const anchor = document.createElement('a');
-            anchor.href = link.url;
-            anchor.className = 'social-link';
-            anchor.setAttribute('aria-label', link.label);
-            anchor.target = '_blank';
-            anchor.rel = 'noopener noreferrer';
+            const button = document.createElement('button');
+            button.className = 'social-link';
+            button.setAttribute('aria-label', link.label);
+            button.onclick = () => switchPage(link.page);
             
-            // Add click sound
-            anchor.addEventListener('click', (e) => {
+            button.addEventListener('click', (e) => {
                 sounds.playClickSound();
             });
 
             const icon = document.createElement('i');
             icon.className = link.icon;
 
-            anchor.appendChild(icon);
-            container.appendChild(anchor);
+            button.appendChild(icon);
+            container.appendChild(button);
         });
 
-        // ─── Join button click sound ─────────────────────────────
+        // Join button click sound
         document.getElementById('joinButton').addEventListener('click', (e) => {
             sounds.playClickSound();
         });
@@ -994,13 +1393,9 @@
         const mainCard = document.getElementById('mainCard');
 
         function triggerGlitch() {
-            // Play glitch sound
             sounds.playGlitchSound();
-            
-            // Activate overlay
             glitchOverlay.classList.add('active');
             
-            // --- VERTICAL GLITCH LINES ---
             const numVerticalLines = Math.floor(Math.random() * 4) + 2;
             for (let i = 0; i < numVerticalLines; i++) {
                 const line = document.createElement('div');
@@ -1010,23 +1405,14 @@
                 line.style.height = (Math.random() * 60 + 20) + '%';
                 line.style.animationDuration = (Math.random() * 0.6 + 0.4) + 's';
                 line.style.animationDelay = (Math.random() * 0.3) + 's';
-                
                 const isPink = Math.random() > 0.5;
                 line.style.background = isPink ? 
                     `rgba(255, 0, 255, ${Math.random() * 0.15 + 0.05})` : 
                     `rgba(0, 200, 255, ${Math.random() * 0.15 + 0.05})`;
-                line.style.boxShadow = isPink ?
-                    `0 0 10px rgba(255, 0, 255, 0.1), 0 0 20px rgba(0, 200, 255, 0.05)` :
-                    `0 0 10px rgba(0, 200, 255, 0.1), 0 0 20px rgba(255, 0, 255, 0.05)`;
-                
                 glitchOverlay.appendChild(line);
-                
-                setTimeout(() => {
-                    line.remove();
-                }, 1500);
+                setTimeout(() => line.remove(), 1500);
             }
 
-            // --- HORIZONTAL GLITCH BARS ---
             const numBars = Math.floor(Math.random() * 6) + 3;
             for (let i = 0; i < numBars; i++) {
                 const bar = document.createElement('div');
@@ -1037,36 +1423,24 @@
                 bar.style.animationDuration = (Math.random() * 0.3 + 0.1) + 's';
                 bar.style.background = `rgba(${Math.random() > 0.5 ? '255,0,255' : '0,200,255'}, ${Math.random() * 0.15 + 0.05})`;
                 glitchOverlay.appendChild(bar);
-                
-                setTimeout(() => {
-                    bar.remove();
-                }, 500);
+                setTimeout(() => bar.remove(), 500);
             }
 
-            // --- COLOR SHIFT GLITCH ---
             const colorGlitch = document.createElement('div');
             colorGlitch.className = 'glitch-color';
             glitchOverlay.appendChild(colorGlitch);
-            setTimeout(() => {
-                colorGlitch.remove();
-            }, 200);
+            setTimeout(() => colorGlitch.remove(), 200);
 
-            // --- SCREEN SHAKE ---
             mainCard.classList.add('glitch-shake');
-            setTimeout(() => {
-                mainCard.classList.remove('glitch-shake');
-            }, 200);
+            setTimeout(() => mainCard.classList.remove('glitch-shake'), 200);
 
-            setTimeout(() => {
-                glitchOverlay.classList.remove('active');
-            }, 500);
+            setTimeout(() => glitchOverlay.classList.remove('active'), 500);
         }
 
         // ============================================================
         //  FLYING CONTROLLER
         // ============================================================
         function spawnFlyingController() {
-            // Play spinning sound
             sounds.playSpinSound();
             
             const controller = document.createElement('div');
@@ -1084,19 +1458,12 @@
             const colors = ['#ff6bff', '#00d4ff', '#a07aff'];
             const randomColor = colors[Math.floor(Math.random() * colors.length)];
             controller.style.color = randomColor;
-            controller.style.textShadow = `0 0 20px ${randomColor}40, 0 0 40px ${randomColor}20, 0 0 60px rgba(0, 200, 255, 0.1)`;
             
             const rotation = Math.random() * 720 + 360;
             
             const directions = [
-                { dx: 1, dy: 0 },
-                { dx: -1, dy: 0 },
-                { dx: 0, dy: 1 },
-                { dx: 0, dy: -1 },
-                { dx: 1, dy: 1 },
-                { dx: -1, dy: 1 },
-                { dx: 1, dy: -1 },
-                { dx: -1, dy: -1 }
+                { dx: 1, dy: 0 }, { dx: -1, dy: 0 }, { dx: 0, dy: 1 }, { dx: 0, dy: -1 },
+                { dx: 1, dy: 1 }, { dx: -1, dy: 1 }, { dx: 1, dy: -1 }, { dx: -1, dy: -1 }
             ];
             const direction = directions[Math.floor(Math.random() * directions.length)];
             
@@ -1105,32 +1472,15 @@
             document.body.appendChild(controller);
             
             controller.animate([
-                { 
-                    transform: `translate(0, 0) scale(0.5) rotate(0deg)`,
-                    opacity: 0
-                },
-                { 
-                    transform: `translate(${direction.dx * 30}%, ${direction.dy * 30}%) scale(1.2) rotate(${rotation * 0.3}deg)`,
-                    opacity: 1,
-                    offset: 0.2
-                },
-                { 
-                    transform: `translate(${direction.dx * 60}%, ${direction.dy * 60}%) scale(1) rotate(${rotation * 0.7}deg)`,
-                    opacity: 1,
-                    offset: 0.6
-                },
-                { 
-                    transform: `translate(${direction.dx * 120}%, ${direction.dy * 120}%) scale(0.8) rotate(${rotation}deg)`,
-                    opacity: 0
-                }
+                { transform: `translate(0, 0) scale(0.5) rotate(0deg)`, opacity: 0 },
+                { transform: `translate(${direction.dx * 30}%, ${direction.dy * 30}%) scale(1.2) rotate(${rotation * 0.3}deg)`, opacity: 1, offset: 0.2 },
+                { transform: `translate(${direction.dx * 60}%, ${direction.dy * 60}%) scale(1) rotate(${rotation * 0.7}deg)`, opacity: 1, offset: 0.6 },
+                { transform: `translate(${direction.dx * 120}%, ${direction.dy * 120}%) scale(0.8) rotate(${rotation}deg)`, opacity: 0 }
             ], {
                 duration: duration * 1000,
                 easing: 'ease-in-out'
-            }).onfinish = () => {
-                controller.remove();
-            };
+            }).onfinish = () => controller.remove();
             
-            // Trail effect
             const trail = document.createElement('div');
             trail.className = 'controller-trail';
             trail.style.left = startX + '%';
@@ -1163,39 +1513,21 @@
         // ============================================================
         function scheduleRandomEvent() {
             const delay = (Math.random() * 35 + 10) * 1000;
-            
             setTimeout(() => {
                 const events = [];
-                
-                if (Math.random() < 0.7) {
-                    events.push('glitch');
-                }
-                
-                if (Math.random() < 0.6) {
-                    events.push('controller');
-                }
-                
-                if (events.length === 0) {
-                    events.push('glitch', 'controller');
-                }
-                
+                if (Math.random() < 0.7) events.push('glitch');
+                if (Math.random() < 0.6) events.push('controller');
+                if (events.length === 0) events.push('glitch', 'controller');
                 events.forEach(event => {
-                    if (event === 'glitch') {
-                        setTimeout(() => triggerGlitch(), Math.random() * 300);
-                    }
-                    if (event === 'controller') {
-                        setTimeout(() => spawnFlyingController(), Math.random() * 500);
-                    }
+                    if (event === 'glitch') setTimeout(() => triggerGlitch(), Math.random() * 300);
+                    if (event === 'controller') setTimeout(() => spawnFlyingController(), Math.random() * 500);
                 });
-                
                 scheduleRandomEvent();
             }, delay);
         }
 
-        // Start the random event loop
         scheduleRandomEvent();
 
-        // Initial events after 5 seconds
         setTimeout(() => {
             triggerGlitch();
             setTimeout(() => spawnFlyingController(), 800);
